@@ -1,0 +1,45 @@
+#!YOUR/PATH/GOES/HERE
+import os
+import subprocess
+import sys
+from google import genai
+
+client = genai.Client(api_key="YOUR-KEY-GOES-HERE")
+
+current_directory = os.getcwd()
+
+user_input = ' '.join(sys.argv[1:])
+if not user_input:
+    print("Usage: \033[95mflick\033[0m <your command>")
+    sys.exit(1)
+
+
+response = client.models.generate_content(
+    model="gemini-2.0-flash",
+    contents="convert the following into JUST zsh terminal commands, no extra text, no code formatting, do not say 'zsh' at all. Output must only be the shell commands, one per line:\n" + user_input
+)
+
+commands = response.text.strip().split("\n")
+
+print("\nGenerated commands:")
+for command in commands:
+    print(command)
+userin = input("Do you want to run the Generated Commands? (y/n) \n")
+if userin == "y":
+    for command in commands:
+        print(f"> {command}")
+
+        # Handle 'cd' commands yourself
+        if command.startswith("cd "):
+            path = command[3:].strip()
+            path = os.path.expandvars(os.path.expanduser(path.strip('"').strip("'")))
+
+            if os.path.isdir(path):
+                os.chdir(path)
+                print(f"✅ Changed directory to: {os.getcwd()}")
+            else:
+                print(f"❌ Directory not found: {path}")
+                break
+        else:
+            subprocess.run(command, shell=True)
+
