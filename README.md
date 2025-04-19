@@ -13,6 +13,10 @@ Built for macOS · Powered by Google Gemini · Written in Python
 
 ## What can flick do?
 
+
+https://github.com/user-attachments/assets/92f21fa0-504b-4997-84b2-adf37a9f0022
+
+
 - Initialize and build new projects using natural language  
 - Generate and refactor code in real time  
 - Summarize output, errors, or logs  
