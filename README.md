@@ -42,6 +42,7 @@ https://github.com/user-attachments/assets/92f21fa0-504b-4997-84b2-adf37a9f0022
    python3 -m venv flickvenv
    source flickvenv/bin/activate
    pip install -q -U google-genai
+   pip install "urllib3<2.0" # (optional, but may prevent warnings)
    ```
 
 3. Get your Python path  
@@ -59,18 +60,19 @@ https://github.com/user-attachments/assets/92f21fa0-504b-4997-84b2-adf37a9f0022
    - Unzip the repo if needed.  
    - Move the `flick` file to your local bin:  
      ```bash
-     mv flick /usr/local/bin
+     mv flick /usr/local/bin/ # (if this directory does not exist, you may need to create it.)
      ```
    - Navigate to the install location:  
      ```bash
-     cd /usr/local/bin
+     cd /
+     cd usr/local/bin/
      ```
    - Open `flick` in your preferred terminal editor:  
      ```bash
      nvim flick # nano or vim works too
      ```
    - Replace:  
-     - `YOUR/PATH/GOES/HERE` with the Python path you copied  
+     - `YOUR/PATH/GOES/HERE` with the Python path you copied. **Note:**(The '#!' at the beginning of the path is **necessary.**)
      - `YOUR-KEY-GOES-HERE` with your Gemini API key (inside the quotes)
 
 6. Make it executable  
