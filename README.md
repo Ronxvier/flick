@@ -42,7 +42,7 @@ https://github.com/user-attachments/assets/92f21fa0-504b-4997-84b2-adf37a9f0022
    python3 -m venv flickvenv
    source flickvenv/bin/activate
    pip install -q -U google-genai
-   pip install "urllib3<2.0" # (optional, but may prevent warnings)
+   pip install "urllib3<2.0" # optional, but may prevent warnings
    ```
 
 3. Get your Python path  
